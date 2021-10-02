@@ -26,20 +26,24 @@ const MyComponent = (): ReactElement => {
 
 `useCountUp` takes a configuration object with the following keys:
 
-start
-: the number to start with
+### start
+the number to start with
 
-end
-: the number to end at
+### end
+the number to end at
 
-duration
-: the duration of the animation in miliseconds
+### duration
+the duration of the animation in miliseconds
 
-started (optional, default `true`)
-: whether the animation has started or not
+### started (optional)
+whether the animation has started or not
 
-formatter (optional, default `v => v.toFixed(0)`)
-: a function in the form `(value: number) => string` to be applied to the return value
+default `true`
+
+### formatter (optional)
+a function in the form `(value: number) => string` to be applied to the return value
+
+default `v => v.toFixed(0)`
 
 > 📝 If supplying a formatter function, ensure that you provide a constant reference to the useCountUp hook. Either create the function outside your component, or memoize it.
 
@@ -57,8 +61,10 @@ const MyComponent = (): ReactElement => {
 }
 ```
 
-easingFunction (optional, default `'easeOutExpo'`)
-: a function in the form (t: number, b: number, c: number, d: number) => number or a string value for one of the [built-in easing functions](#built-in-easing-functions) used to be used to calculate the return value
+### easingFunction (optional)
+a function in the form (t: number, b: number, c: number, d: number) => number or a string value for one of the [built-in easing functions](#built-in-easing-functions) used to be used to calculate the return value
+
+default `'easeOutExpo'`
 
 > 📝 If supplying an easing function, ensure that you provide a constant reference to the useCountUp hook. Either create the function outside your component, or memoize it.
 
@@ -67,9 +73,9 @@ import { useCountUp } from 'react-use-count-up';
 
 // declared outside the component
 const easeOutCirc = (t, b, c, d) => {
-	t /= d;
-	t--;
-	return c * Math.sqrt(1 - t * t) + b;
+  t /= d;
+  t--;
+  return c * Math.sqrt(1 - t * t) + b;
 };
 
 const MyComponent = (): ReactElement => {

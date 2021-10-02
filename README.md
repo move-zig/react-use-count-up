@@ -136,12 +136,19 @@ const options = {
 
 ### Custom Easing Functions
 
-Custom easing functions take the following paramters:
+Custom easing functions are in the form `(t: number, b: number, c: number, d: number) => number` and take the following paramters:
 
-t: the amount of time elapsed
-b: the start value
-c: the total change (i.e. `end - start`)
-d: the total duration
+#### t
+the amount of time elapsed
+
+#### b
+the start value
+
+#### c
+the total change (i.e. `end - start`)
+
+#### d
+the total duration
 
 They return the how far through the animation we are, from `0` to `1`.
 

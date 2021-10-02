@@ -10,10 +10,10 @@ npm i react-use-count-up
 
 ## Usage
 
-```
+```javascript
 import { useCountUp } from 'react-use-count-up';
 
-const MyComponent = (): ReactElement => {
+const MyComponent = () => {
   const value = useCountUp({ start: 0, end: 42, duration: 500 });
 
   return (
@@ -47,12 +47,12 @@ default `v => v.toFixed(0)`
 
 > 📝 If supplying a formatter function, ensure that you provide a constant reference to the useCountUp hook. Either create the function outside your component, or memoize it.
 
-```
+```javascript
 import { useCountUp } from 'react-use-count-up';
 
-const formatter = v => v < 4 ? 0 : v; // declared outside the component
+const formatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format // declared outside the component
 
-const MyComponent = (): ReactElement => {
+const MyComponent = () => {
   const value = useCountUp({ start: 0, end: 42, duration: 500, formatter });
 
   return (
@@ -68,7 +68,7 @@ default `'easeOutExpo'`
 
 > 📝 If supplying an easing function, ensure that you provide a constant reference to the useCountUp hook. Either create the function outside your component, or memoize it.
 
-```
+```javascript
 import { useCountUp } from 'react-use-count-up';
 
 // declared outside the component
@@ -78,7 +78,7 @@ const easeOutCirc = (t, b, c, d) => {
   return c * Math.sqrt(1 - t * t) + b;
 };
 
-const MyComponent = (): ReactElement => {
+const MyComponent = () => {
   const value = useCountUp({ start: 0, end: 42, duration: 500, easingFunction: easeOutCirc });
 
   return (
@@ -105,8 +105,8 @@ const MyComponent = (): ReactElement => {
 
 To use one of these built-in easing functions, supply a string to the configuration object
 
-```
-{
+```javascript
+const options = {
   start: 3,
   end: 99,
   duration: 2000,
@@ -128,7 +128,7 @@ They return the how far through the animation we are, from `0` to `1`.
 
 E.g.,
 
-```
+```javascript
 const easeOutExpo = (t, b, c, d) => {
   return (c * (-Math.pow(2, -10 * t / d) + 1)) + b;
 };
@@ -138,12 +138,12 @@ const easeOutExpo = (t, b, c, d) => {
 
 You can use the custom polynomial higher-order functions `easeOutPoly` or `easeInPoly` to create a polynomial easing function of degree n (n = 1 is equivalent to linear, n = 2 is equivalent to quadradic, n = 3 is equivalent to cubic, etc.).
 
-```
+```javascript
 import { easeOutPoly, useCountUp } from 'react-use-count-up';
 
 const easeOutSeptic = easeOutPoly(7);
 
-const MyComponent = (): ReactElement => {
+const MyComponent = () => {
   const value = useCountUp({ start: 0, end: 42, duration: 500, easingFunction: easeOutSeptic });
 
   return (

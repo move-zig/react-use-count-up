@@ -85,17 +85,17 @@ const MyComponent = (): ReactElement => {
 
 ### Built-in Easing Functions
 
-linear
-easeOutExpo
-easeInExpo
-easeOutQuad
-easeInQuad
-easeOutCubic
-easeInCubic
-easeOutQuart
-easeInQuart
-easeOutQuint
-easeInQuint
+* linear
+* easeOutExpo
+* easeInExpo
+* easeOutQuad
+* easeInQuad
+* easeOutCubic
+* easeInCubic
+* easeOutQuart
+* easeInQuart
+* easeOutQuint
+* easeInQuint
 
 To use one of these built-in easing functions, supply a string to the configuration object
 
@@ -128,4 +128,21 @@ const easeOutExpo = (t, b, c, d) => {
 };
 ```
 
+### Custom Polynomial Higher-Order Function
+
+You can use the custom polynomial higher-order functions `easeOutPoly` or `easeInPoly` to create a polynomial easing function of degree n (n = 1 is equivalent to linear, n = 2 is equivalent to quadradic, n = 3 is equivalent to cubic, etc.).
+
+```
+import { easeOutPoly, useCountUp } from 'react-use-count-up';
+
+const easeOutSeptic = easeOutPoly(7);
+
+const MyComponent = (): ReactElement => {
+  const value = useCountUp({ start: 0, end: 42, duration: 500, easingFunction: easeOutSeptic });
+
+  return (
+    <>{value}</>
+  );
+}
+```
 

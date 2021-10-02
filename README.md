@@ -1,6 +1,6 @@
 # react-use-count-up
 
-A React hook for animating a number counting up
+A React hook with Typescript typings for animating a number counting up
 
 ## Installation
 

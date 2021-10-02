@@ -40,17 +40,36 @@ whether the animation has started or not
 
 default `true`
 
+```javascript
+import { useState } from 'react';
+import { useCountUp } from 'react-use-count-up';
+
+
+const MyComponent = () => {
+  const [ started, setStarted ] = useState(false);
+  const value = useCountUp({ start: 0, end: 42, duration: 500, started });
+
+  return (
+    <>
+      <div>Value: {value}</div>
+      <button onClick={() => setStarted(true)}>Start</button>
+    </>
+  );
+}
+```
+
 ### formatter (optional)
 a function in the form `(value: number) => string` to be applied to the return value
 
 default `v => v.toFixed(0)`
 
-> 📝 If supplying a formatter function, ensure that you provide a constant reference to the useCountUp hook. Either create the function outside your component, or memoize it.
+> 📝 If supplying a formatter function, ensure that you provide a constant reference to the useCountUp hook. To prevent unintended re-renders, either create the function outside your component, or memoize it
 
 ```javascript
 import { useCountUp } from 'react-use-count-up';
 
-const formatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format // declared outside the component
+// declared outside the component
+const formatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format
 
 const MyComponent = () => {
   const value = useCountUp({ start: 0, end: 42, duration: 500, formatter });
@@ -62,11 +81,11 @@ const MyComponent = () => {
 ```
 
 ### easingFunction (optional)
-a function in the form (t: number, b: number, c: number, d: number) => number or a string value for one of the [built-in easing functions](#built-in-easing-functions) used to be used to calculate the return value
+a custom easing function in the form `(t: number, b: number, c: number, d: number) => number` or a string that equals one of the [built-in easing functions](#built-in-easing-functions) used to be used to calculate the return value
 
 default `'easeOutExpo'`
 
-> 📝 If supplying an easing function, ensure that you provide a constant reference to the useCountUp hook. Either create the function outside your component, or memoize it.
+> 📝 If supplying an easing function, ensure that you provide a constant reference to the useCountUp hook. To prevent unintended re-renders, either create the function outside your component, or memoize it.
 
 ```javascript
 import { useCountUp } from 'react-use-count-up';

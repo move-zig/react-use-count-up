@@ -1,7 +1,7 @@
 {
   "name": "react-use-count-up",
-  "version": "1.0.0",
-  "description": "A React hook for animating a number counting up",
+  "version": "1.0.1",
+  "description": "A React hook with Typescript typings for animating a number counting up",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
@@ -19,7 +19,8 @@
     "react",
     "count",
     "countup",
-    "hook"
+    "hook",
+    "typescript"
   ],
   "author": "Dave Welsh",
   "license": "ISC",

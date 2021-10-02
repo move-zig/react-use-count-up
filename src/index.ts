@@ -18,7 +18,7 @@ export type CountUpProperties = {
   start: number;
   end: number;
   duration: number;
-  started: boolean;
+  started?: boolean;
   formatter?: (value: number) => string;
   /** the easing function to use, default: easeOutExpo */
   easingFunction?: EasingFunction | EasingFunctionName;
@@ -27,7 +27,7 @@ export type CountUpProperties = {
 const fps = 60;
 const intervalDelay = Math.round(1 / fps * 1000);
 
-export const useCountUp = ({ start, end, duration, started, formatter, easingFunction }: CountUpProperties): string => {
+export const useCountUp = ({ start, end, duration, started = true, formatter, easingFunction }: CountUpProperties): string => {
   const [ value, setValue ] = useState(start);
 
   useEffect(() => {
